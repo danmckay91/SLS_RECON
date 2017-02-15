@@ -28,6 +28,7 @@ def scan_header(header):
 	#will count detectors and find elements
 	ref=['OKa', 'FeKa','NaKa','MgKa','AlKa','SiKa','PKa','SKa','ClKa','ArKa','KKa','CaKa','El']
 	el_dict={}
+	mode=" "
 	for st in header:
 		if st[-4:]=="corr":
 			mode="DTC"
@@ -107,7 +108,7 @@ def summ(row,indis):
 def create_array_sum(header,data,list_of_indi):
 	#list_of_inidi should be the list of cols that each detector is in
 	#for a certain el
-
+	
 	x_i=header.index('ScanX_set')
 	y_i =header.index("ScanY_set")
 	point_value = {}
@@ -168,6 +169,7 @@ class sls:
 	
 	def print_all(self): #will save all elements
 		for el in self.elements:
+			print el
 			ar,delx,dely = self.get_array(el)
 			i =Image.fromarray(np.transpose(ar)) #transpose to get to image coords
 			i.save("{0}.tif".format(el))
@@ -176,19 +178,17 @@ class sls:
 		f.close()
 	
 if __name__ == "__main__":
-	#DATA_DIR = "./10/2016_1210_134734_AR_Map_7200_lr/2016_1210_134734_AR_Map_7200_lr_0000.txt"
-
-	DATA_DIR = sys.argv[0]
+	#DATA_DIR =  './2016_1209_185714_AR_Quick_map_0000.txt'
+	DATA_DIR = sys.argv[1]
 	h,d=read_sls(DATA_DIR)
 	#ar=create_array_sum(h,d,[193,194,195,196])
 	
 	#ar=create_array(h,d,"D1_PKa_corr") +create_array(h,d,"D2_PKa_corr")+create_array(h,d,"D3_PKa_corr")+create_array(h,d,"D4_PKa_corr")   
 	#i=Image.fromarray(np.transpose(ar))
 	#i.save("test1.tif")
-	
 	data = sls(DATA_DIR)
 	data.print_all()
-
+	
 			
 	
 
