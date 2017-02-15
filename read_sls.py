@@ -116,10 +116,12 @@ def create_array_sum(header,data,list_of_indi):
 	ly=[]
 	l = range(len(data))
 	for row in l:
-		point_value[float(data[row][x_i]),float(data[row][y_i])] =summ(data[row],list_of_indi)
-		lx.append(float(data[row][x_i]))
-		ly.append(float(data[row][y_i]))
-	
+		try: 
+			point_value[float(data[row][x_i]),float(data[row][y_i])] =summ(data[row],list_of_indi)
+			lx.append(float(data[row][x_i]))
+			ly.append(float(data[row][y_i]))
+		except IndexError:
+			print "Warning, corrupt pixel"
 	sx = list(set(lx))#no duplicates and sorted
 	sy= list(set(ly)) #no duplicates and sorted
 	sx.sort()
