@@ -5,6 +5,8 @@ The sum of values recorded by each detector is used.
 Pixels with no value recorded are assigned NAN (numpy.NAN)
 A .log file is also created. This file contains the size of the pixels.
 
+OPEN IMAGES IN FIJI TO ADJUST CONTRAST etc
+
 Tested in unix with python 2.7.3
 
 Needs numpy and PIL.
