@@ -83,6 +83,7 @@ def create_array(header,data,detector_element):
 
 	
 	array = np.zeros((len(sx),len(sy)))
+	array[:] = np.NAN
 	for tup in point_value.iterkeys():
 		array[x_dict[tup[0]],y_dict[tup[1]]] = point_value[tup]
 		
@@ -135,6 +136,7 @@ def create_array_sum(header,data,list_of_indi):
 
 	
 	array = np.zeros((len(sx),len(sy)))
+	array[:]=np.NAN
 	for tup in point_value.iterkeys():
 		array[x_dict[tup[0]],y_dict[tup[1]]] = point_value[tup]
 		
@@ -170,12 +172,14 @@ class sls:
 		return ar,delx,dely
 	
 	def print_all(self): #will save all elements
+		st = self.loc
+		name = st[:-4]
 		for el in self.elements:
 			print el
 			ar,delx,dely = self.get_array(el)
 			i =Image.fromarray(np.transpose(ar)) #transpose to get to image coords
-			i.save("{0}.tif".format(el))
-		f=open("sls_reconstruct.log", 'w')
+			i.save("{0}_{1}.tif".format(name,el))
+		f=open("sls_reconstruct_{0}.log".format(name), 'w')
 		f.write("pixel x (mm)={0} \npixel y (mm)={1}".format(dely,delx))
 		f.close()
 	
