@@ -14,3 +14,8 @@ Needs numpy and PIL.
 Example call:
 $python read_sls.py "/path/to/sls_data.txt"
 
+
+read_sls.py is for the data type which has the long header from sls. An example is 2016_1210_092826_new_data_type.dat
+
+read_sls_short_header.py is for the shorter header which has been peak fitted, an example is 2016_1210_092826_new_data_type.dat
+NOTE: in 2016_1210_092826_new_data_type.dat double space delimated has been changed to single space deliminated. This needs to be done to the data before appplying.
