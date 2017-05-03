@@ -175,7 +175,7 @@ class sls:
 if __name__ == "__main__":
 	DATA_DIR = "./2016_1210_092826_new_data_type.dat"
 
-	#DATA_DIR = sys.argv[0]
+	DATA_DIR = sys.argv[1]
 	h,d=read_sls(DATA_DIR)
 	#ar=create_array_sum(h,d,[193,194,195,196])
 	
